@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebEncodeMessages.Models.VmEncryptedMessages>
+
+<div class="col-md-6 col-md-offset-3">
+    @using (Html.BeginForm("SendMessage", "Home", FormMethod.Post))
+    {
+        <div class="input-group-addon">
+            <input id="message" name="message" class="input-sm" style="width:100%" placeholder="Введите сообщение..." />
+            <button class="btn btn-primary btn-sm" type="submit">Отправить</button>
+        </div>
+
+    }
+
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Текст зашифрованного сообщения
+            </th>
+            <th>
+                Время получения
+            </th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.MessageText
+                    </td>
+                    <td>
+                        @item.TimeStampText
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+
